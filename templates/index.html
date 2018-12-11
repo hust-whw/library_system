@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block link %}
+  <a href="{{ url_for('manager_login')}}">Admin Login </a>|
+  <a href="{{ url_for('reader_login')}}">Customer Login </a>
+{% endblock %}
+
+{% block body %}
+  <h2>Welcome!</h2>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+{% block title%} Navbar {% endblock %}
+{% block link%} 
+	<a href="{{ url_for('logout')}}"> Logout [{{ g.user}}]</a> | 
+	<a href="{{ url_for('manager_books') }}"> Books Manage </a> |
+	<a href="{{ url_for('manager_users') }}"> User Manage </a> 
+{%  endblock%}
+{% block body%}
+{% endblock%}

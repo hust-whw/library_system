@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %} Books dashboard {% endblock %}
+
+{% block link %}
+	<a href="{{ url_for('manager_books') }}"> Back </a> | 
+	{% if book %}
+	<a href="{{ url_for('manager_modify', id=book.book_id)}}"> Modify </a>
+	{% endif %}
+{% endblock %}
+{% block body %}
+	<h2> Book Info </h2>
+	{% if book %}
+	<li> ISBN            	{{book.book_id}} </li>
+	<li> Title       		{{book.book_name}} </li>
+	<li> Author        		{{book.author}} </li>	
+	<li> msg1     	{{book.publish_com}} </li>
+	<li> msg2   	{{book.publish_date}} </li>
+	{% endif %}
+	<br/>
+	<h2 > Loan Info </h2>
+	{% if reader  %}
+	<li> Loaner {{reader.user_name}}</li>
+	<li> Loan date  {{reader.date_borrow}}</li>
+	<li> Recall date  {{reader.date_return}}</li>
+	<form action="" method=post>
+	  <div class=actions>
+	    <input type=submit value="Recall">
+	    </div>
+	</form>
+	{% else %}
+	<li> --- </li> 
+	{% endif %}
+{% endblock %}

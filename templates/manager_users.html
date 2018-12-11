@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block title%} User Manage {% endblock %}
+{% block link%} 
+	<a href="{{ url_for('manager')}}"> Back </a> 
+{%  endblock%}
+{% block body%}
+	<h2> User Manage </h2>
+	<table width="600" border="1", align="center">
+	  <tr>
+	    <th align="center"> Username </th>
+	    <th align="center"> User Info </th>
+	  </tr>
+	  {% for user in users%}
+	  <tr>
+	    <th align="center"> {{user.user_name}}</th>
+	    <th align="center"> <a href="{{ url_for('manager_user', id=user.user_id)}}"> Click </a> </th>
+	  </tr>
+	  {% endfor %}
+	</table>
+{% endblock%}

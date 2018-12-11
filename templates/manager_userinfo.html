@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %} User Dashboard {% endblock %}
+
+{% block link %}
+	<a href="{{ url_for('manager_users') }}"> Back  </a>  |
+	<a href="{{ url_for('manger_user_modify', id=user.user_id)}}"> Edit </a> | 
+	<a href="{{ url_for('manger_user_delete', id=user.user_id)}}"> Logout </a>
+{% endblock %}
+{% block body  %}
+	<h2> User Info </h2>
+	{% if user %}
+	<li> Username {{user.user_name}} </li>
+	<li> msg1 {{user.college}} </li>
+	<li> msg2 {{user.num}} </li>
+	<li> msg3 {{user.email}} </li>
+	{% endif %}
+
+{% endblock %}

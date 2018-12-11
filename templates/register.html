@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %} Register {% endblock %}
+{% block link %} 
+	<a href="{{ url_for('reader_login')}}"> Back </a>
+{% endblock %}
+{% block body %}
+	{% if error %}
+	<div class=error>
+	  <strong>Errror : </strong> {{error}}
+	</div>
+	{% endif %}  
+	<form action="" method=post>
+	  <dl>
+	    <dt>Username:</dt>
+	    <dd><input type=text name=username size=30 value="{{ request.form.username}}"> </dd>	
+	    <dt>Password:</dt>
+	    <dd><input type=password name=password size=30> </dd>
+	    <dt>Password<small>(Confirm)</small>:	</dt>
+	    <dd><input type=password name=password2 size=30> </dd>
+	    <dt>msg1:</dt>
+	    <dd><input type=text name=college size=30> </dd>
+	    <dt>msg2:</dt>
+	    <dd><input type=text name=number size=30> </dd>
+	    <dt>msg3:</dt>
+	    <dd><input type=text name=email size=30> </dd>
+	  </dl>
+	  <div class=actions><input type=submit value="Submit"></div>
+	</form>
+
+{% endblock %}

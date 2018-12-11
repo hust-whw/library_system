@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %} Profile {% endblock %}
+
+{% block link %}
+	<a href="{{ url_for('reader') }}"> Back  </a>  |
+	<a href="{{ url_for('reader_modify')}}"> Edit </a>
+{% endblock %}
+{% block body  %}
+	<h2> User Info </h2>
+	{% if user %}
+	<li> Username {{user.user_name}} </li>
+	<li> msg1 {{user.college}} </li>
+	<li> msg2 {{user.num}} </li>
+	<li> msg3 {{user.email}} </li>
+	{% endif %}
+
+{% endblock %}

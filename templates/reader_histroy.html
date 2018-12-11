@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %} Books Catalog {% endblock %}
+{% block link %} 
+	<a href="{{ url_for('reader')}}"> Back </a>
+{% endblock %}
+{% block body %}
+	<table width="600" border="1" align="center">
+	  <tr>
+	    <th align="center"> Title </th>
+	    <th align="center"> Loan date </th>	
+	    <th align="center"> Recall date </th>
+	    <th align="center"> Status </th>
+	    <th align="center"> Detail </th>
+	  </tr>
+	  {% for histroy in histroys x%}
+	  <tr>
+	    <th align="center"> {{histroy.book_name}} </th>
+	    <th align="center"> {{histroy.date_borrow}}</th>
+	    <th align="center"> {{histroy.date_return}} </th> 
+	    <th align="center"> {{histroy.status}} </th>
+	    <th align="center"> <a href="{{ url_for('reader_book', id=histroy.book_id)}}"> Click </a> </th>
+	  </tr>
+	  {% endfor %}
+	</table>	
+
+{% endblock %}

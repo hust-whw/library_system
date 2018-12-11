@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block title %} Book Info {% endblock %}
+{% block link %} 
+	{% if book %}
+	<a href="{{ url_for('reader')}}"> Back </a>
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	{% if error %}
+	<div class=error>
+	  <strong>Errror : </strong> {{error}}
+	</div>
+	{% endif %}
+	<h2> Book Info </h2>
+	{% if book %}
+	<li> ISBN            	{{book.book_id}} </li>
+	<li> Title        		{{book.book_name}} </li>
+	<li> Author        		{{book.author}} </li>	
+	<li> msg1     	{{book.publish_com}} </li>
+	<li> msg2   	{{book.publish_date}} </li>
+	{% endif %}
+	<div >
+	  <h2 > Loan Info </h2>
+	  {% if reader  %}
+	  <li> Loaner {{reader.user_name}}</li>
+	  <li> Loan date  {{reader.date_borrow}}</li>
+	  <li> Recall date  {{reader.date_return}}</li>
+	  	{% if reader.date_return == '' %}
+		  <form action="{{book.book_id}}/return" method=post>
+		    <div class=actions>
+		      <input type=submit value="Recall">
+		    </div>
+		  </form>
+		{% else %}
+		<form action="" method=post>
+		    <div class=actions>
+		      <input type=submit value="Loan">
+		    </div>
+		  </form>
+		{% endif %}
+
+	  {% else %}
+	  <li> --- </li>
+	  <form action="" method=post>
+	    <div class=actions>
+	      <input type=submit value="Loan">
+	    </div>
+	  </form>
+	  {% endif %}
+
+{% endblock %}

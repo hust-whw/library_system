@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title%} Search Books  {% endblock %}
+{% block link %} 
+	<a href="{{ url_for('reader') }}"> Back </a>
+{% endblock %}
+{% block body %}
+	<h2> Search Books </h2> 
+	{% if error %}
+	<div class=error>
+	  <strong>Error : </strong> {{error}}
+	</div>
+	{% endif %}  
+    <div class=actions>
+	  <form action="" method="post">
+	    <dd>
+	      <select name="item">
+		<option value="name"> Title </option>
+		<option value="author"> Author </option>
+	      </select>
+	      <input type="text" name="query" size="80"> 
+	      <input type="submit" value="Find">
+	    </dd> 
+	  </form>
+	</div>
+	{% if books %}
+	<table width="600" border="1" align="center">
+	  <tr>
+	    <th align="center"> ISBN </th>
+	    <th align="center"> Title </th>
+	    <th align="center"> Author</th>
+	    <th align="center"> msg1 </th>
+	    <th align="center"> msg2 </th>	
+	    <th align="center"> msg3 </th>
+	  </tr>
+	  {% for book in books %}
+	  <tr>
+	    <th align="center"> {{book.book_id}}</th>
+	    <th align="center"> {{book.book_name}} </th>
+	    <th align="center"> {{book.author}}</th>
+	    <th align="center"> {{book.publish_com}} </th>
+	    <th align="center"> {{book.publish_date}}</th>
+	    <th align="center"> <a href="{{ url_for('reader_book', id=book.book_id)}}"> Click </a> </th>
+	  </tr>
+	  {% endfor %}
+	  {% endif %}
+	</table>	
+{% endblock %}
+

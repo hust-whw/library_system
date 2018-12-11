@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block title %} Welcome {% endblock %}
+{% block link %} 
+	<a href="{{url_for('logout')}}"> Logout[{{g.user}}] </a> | 
+	<a href="{{url_for('reader_query')}}"> Search Book </a> | 
+	<a href="{{url_for('reader_info')}}"> Profile </a> |
+	<a href="{{url_for('reader_histroy')}}"> Book Catalog </a>
+
+{% endblock %}
+
+{% block body %}
+	<h2> Welcome! </h2>
+{% endblock %}
